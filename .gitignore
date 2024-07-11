@@ -1,0 +1,8 @@
+obj
+out
+bin
+build
+obj/*
+out/*
+bin/*
+build/*
