@@ -6,3 +6,5 @@ obj/*
 out/*
 bin/*
 build/*
+bin-wine
+bin-wine/*
