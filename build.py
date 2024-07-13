@@ -48,8 +48,13 @@ def ensure_wine_available():
     if not os.path.exists(dotnet_bin):
       shutil.unpack_archive(dotnet_zipfile, 'bin-dotnet')
 
-    os.chmod(dotnet_bin, 0o755)
+    for root, dirs, files in os.walk(os.path.abspath('bin-dotnet')):
+      for file in files:
+        lfile = file.lower()
+        if lfile.endswith('.exe') or lfile.endswith('.dll'):
+          os.chmod(os.path.join(root, file), 0o755)
 
+    os.environ['DOTNET_CLI_TELEMETRY_OPTOUT'] = 'true'
     os.environ['PATH'] = os.environ['PATH']+os.pathsep+os.path.abspath(os.path.join('bin-dotnet'))
 
 
