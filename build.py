@@ -38,7 +38,15 @@ def main(args=sys.argv):
   ensure_wine_available()
 
   #c('dotnet', 'build', '--runtime', 'win-x64')
-  c('dotnet', 'publish', '--runtime', 'win-x64')
+
+  c('dotnet', 'publish',
+      '--framework', 'net8.0',
+      '--runtime', 'win-x64')
+
+  # c('dotnet', 'publish',
+  #     '--framework', 'net8.0-windows',
+  #     '--runtime', 'win-x64')
+
 
   # scan 'bin' for 'task-file.exe'
   task_file_exe = None

@@ -14,4 +14,8 @@
 
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='net8.0-windows'">
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
 </Project>
