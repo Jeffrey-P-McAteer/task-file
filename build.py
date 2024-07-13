@@ -23,7 +23,8 @@ def ensure_wine_available():
     if not os.path.exists(wine_bin):
       shutil.unpack_archive(wine_tarball, 'bin-wine')
 
-    os.environ['PATH'] = os.environ['PATH'] +':'+os.path.abspath(os.path.join('bin-wine', 'wine-9.11-amd64', 'bin'))
+    os.environ['PATH'] = os.environ['PATH']+os.pathsep+os.path.abspath(os.path.join('bin-wine', 'wine-9.11-amd64', 'bin'))
+    os.environ['PATH'] = os.environ['PATH']+os.pathsep+os.path.abspath(os.path.join('bin-wine', 'wine-9.11-amd64', 'lib', 'wine', 'x86_64-unix'))
 
 
 def main(args=sys.argv):
