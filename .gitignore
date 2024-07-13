@@ -8,3 +8,5 @@ bin/*
 build/*
 bin-wine
 bin-wine/*
+bin-dotnet
+bin-dotnet/*
