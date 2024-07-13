@@ -26,11 +26,20 @@ def ensure_wine_available():
     os.environ['PATH'] = os.environ['PATH']+os.pathsep+os.path.abspath(os.path.join('bin-wine', 'wine-9.11-amd64', 'bin'))
     os.environ['PATH'] = os.environ['PATH']+os.pathsep+os.path.abspath(os.path.join('bin-wine', 'wine-9.11-amd64', 'lib', 'wine', 'x86_64-unix'))
 
+    proj_wine_prefix = os.path.abspath(os.path.join('bin-wine', 'wine-prefix'))
+    os.makedirs(proj_wine_prefix, exist_ok=True)
+    os.environ['WINEPREFIX'] = os.environ.get('WINEPREFIX', proj_wine_prefix)
+    os.environ['WINEARCH'] =   os.environ.get('WINEARCH', 'win64')
+    os.environ['WINEDEBUG'] =  os.environ.get('WINEDEBUG', '-all')
+
+
 
 def main(args=sys.argv):
   ensure_wine_available()
 
-  c('dotnet', 'build', '--runtime', 'win-x64')
+  #c('dotnet', 'build', '--runtime', 'win-x64')
+  c('dotnet', 'publish', '--runtime', 'win-x64')
+
   # scan 'bin' for 'task-file.exe'
   task_file_exe = None
   for root, dirs, files in os.walk(os.path.abspath('bin')):
