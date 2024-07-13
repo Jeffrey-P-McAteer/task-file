@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+namespace task_file {
+  public class MainClass {
+    public static void Main(string[] args) {
+      Console.WriteLine("Hello, I am '"+string.Join(' ', args)+"'");
+
+    }
+  }
+}
